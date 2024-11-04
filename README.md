@@ -1,6 +1,6 @@
+# Descripción del Proyecto
 Este repositorio contiene el código fuente de un sistema de recomendación de productos desarrollado como parte de la Práctica Integradora de Ciencia de Datos en la asignatura de Inteligencia en Ciencia de Datos. El sistema utiliza técnicas de procesamiento de lenguaje natural (NLP) y métodos de recomendación basados en contenido para sugerir productos similares, optimizando la experiencia de compra en una tienda en línea.
 
-# Descripción del Proyecto
 # Objetivo
 Desarrollar un modelo de recomendación de productos para una empresa de comercio electrónico, con el fin de mejorar la experiencia del usuario mediante sugerencias personalizadas basadas en productos similares. La solución considera la popularidad del producto y la similitud de su descripción.
 
