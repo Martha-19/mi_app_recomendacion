@@ -17,7 +17,7 @@ Desarrollar un modelo de recomendación de productos para una empresa de comerci
 - requirements.txt: Dependencias del proyecto.
 - README.md: Descripción general del proyecto (este archivo).
 
-# 📌Instrucciones
+# Instrucciones 📌
 - Clona este repositorio.
 - Instala las dependencias ejecutando pip install -r requirements.txt.
 - Inicia la aplicación con streamlit run app.py.
