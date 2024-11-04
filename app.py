@@ -122,3 +122,4 @@ for i, (idx, score) in enumerate(similarity_scores[1:6]):
     st.markdown(f"**Nombre**: {data.iloc[idx]['name']}")
     st.markdown(f"**Descripción**: {data.iloc[idx]['description']}")
     st.write(" ")
+
