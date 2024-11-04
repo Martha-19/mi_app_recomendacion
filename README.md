@@ -12,13 +12,13 @@ Desarrollar un modelo de recomendación de productos para una empresa de comerci
 - Despliegue en la Nube: Configuración para implementar el modelo y la interfaz de usuario en un servicio en la nube.
   
 # Contenidos
-app.py: Código principal de la aplicación en Streamlit.
-zara.csv: Dataset de productos.
-requirements.txt: Dependencias del proyecto.
-README.md: Descripción general del proyecto (este archivo).
+- app.py: Código principal de la aplicación en Streamlit.
+- zara.csv: Dataset de productos.
+- requirements.txt: Dependencias del proyecto.
+- README.md: Descripción general del proyecto (este archivo).
 
-# Instrucciones
-Clona este repositorio.
-Instala las dependencias ejecutando pip install -r requirements.txt.
-Inicia la aplicación con streamlit run app.py.
+# 📌Instrucciones
+- Clona este repositorio.
+- Instala las dependencias ejecutando pip install -r requirements.txt.
+- Inicia la aplicación con streamlit run app.py.
 
