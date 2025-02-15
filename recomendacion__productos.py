@@ -7,7 +7,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 # Paso 1: Cargar y limpiar los datos
-file_path_zara = 'mi_app/zara.csv'
+file_path_zara = 'zara.csv'
 zara_data = pd.read_csv(file_path_zara, delimiter=';')
 
 # Revisar valores nulos y tipos de datos
@@ -79,16 +79,36 @@ print(tfidf_sample_df.iloc[:5, :10])
 similarity_matrix = cosine_similarity(tfidf_matrix)
 
 # Función de recomendación que incorpora la popularidad
+
 def recommend_products_with_popularity(product_index, similarity_matrix, df, top_n=5, popularity_weight=0.5):
+    if product_index >= len(df) or product_index < 0:
+        raise ValueError("El índice del producto está fuera del rango válido.")
+
+    
     similarity_scores = list(enumerate(similarity_matrix[product_index]))
     similarity_scores = sorted(similarity_scores, key=lambda x: x[1], reverse=True)
-    recommended_indices = [i[0] for i in similarity_scores[1:top_n*2+1]]
+
+    max_index = min(top_n * 2, len(similarity_scores) - 1)  # Evita acceder a índices inválidos
+
+    if max_index < 1:
+        raise ValueError("No hay suficientes productos para hacer recomendaciones.")
+
+    recommended_indices = [similarity_scores[i][0] for i in range(1, max_index + 1)]
+
     recommended_products = df.iloc[recommended_indices].copy()
-    recommended_products['similarity_score'] = [similarity_scores[i][1] for i in range(1, top_n*2+1)]
+
+    recommended_products['similarity_score'] = [similarity_scores[i][1] for i in range(1, max_index + 1)]
+
     recommended_products['combined_score'] = (recommended_products['similarity_score'] * (1 - popularity_weight) +
                                               recommended_products['popularity_score'] * popularity_weight)
+
+    # Ordenar por puntaje combinado y devolver las mejores recomendaciones
     final_recommendations = recommended_products.sort_values(by='combined_score', ascending=False).head(top_n)
+
     return final_recommendations[['name', 'Sales Volume', 'popularity_score', 'similarity_score', 'combined_score']]
+
+
+
 
 recommendations = recommend_products_with_popularity(0, similarity_matrix, zara_data)
 print("Recomendaciones para el primer producto:")
